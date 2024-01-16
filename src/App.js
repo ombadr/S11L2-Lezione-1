@@ -5,8 +5,13 @@ import BookStore from './components/BookStore';
 import Cart from './components/Cart';
 import CartIndicator from './components/CartIndicator';
 import Footer from './components/Footer';
+import { useSelector } from 'react-redux';
+
 
 function App() {
+
+	const user = useSelector((state) => state.user.username);
+
 	return (
 		<BrowserRouter>
 			<Container className="main-container">
@@ -16,7 +21,11 @@ function App() {
 							<h1>Book Store</h1>
 						</Link>
 					</Col>
-					<CartIndicator />
+					{
+						user && (
+							<CartIndicator />
+						)
+					}
 				</Row>
 				<Routes>
 					<Route path="/" element={<BookStore />} />
