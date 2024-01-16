@@ -21,11 +21,7 @@ function App() {
 							<h1>Book Store</h1>
 						</Link>
 					</Col>
-					{
-						user && (
-							<CartIndicator />
-						)
-					}
+					<CartIndicator />
 				</Row>
 				<Routes>
 					<Route path="/" element={<BookStore />} />
