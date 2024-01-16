@@ -13,6 +13,14 @@ const Cart = () => {
 
   const navigate = useNavigate();
 
+  // protezione della rotta scritta direttamente nell'url
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/error401');
+    }
+  }, [isLoggedIn, navigate]);
+
   return (
     <Row>
       <Col sm={12}>

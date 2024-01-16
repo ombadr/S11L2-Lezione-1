@@ -6,6 +6,7 @@ import Cart from './components/Cart';
 import CartIndicator from './components/CartIndicator';
 import Footer from './components/Footer';
 import { useSelector } from 'react-redux';
+import Error401 from './components/Error401';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<BookStore />} />
 					<Route path="/cart" element={<Cart />} />
+					<Route path="/error401" element={<Error401 />} />
 				</Routes>
 			</Container>
 			<Footer />
