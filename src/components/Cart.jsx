@@ -24,7 +24,7 @@ const Cart = () => {
   return (
     <Row>
       <Col sm={12}>
-        {cart.length == 0 ? (
+        {cart.length === 0 ? (
           <h2>Nessun elemento presente nel carrello</h2>
         ) : (
           <ul style={{ listStyle: 'none' }}>

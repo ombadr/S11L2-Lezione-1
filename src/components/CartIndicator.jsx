@@ -25,10 +25,10 @@ const CartIndicator = () => {
 
       {user ? (
         <>
-          <span>Benvenuto, {user}!</span>&nbsp;
+          <span className='me-2'>Benvenuto, {user}!</span>
           <Button
             onClick={() => navigate('cart')}
-            className='d-flex align-items-center'
+            className='d-flex align-items-center ms-2'
           >
             <FaShoppingCart />
             <span className='ms-2'>{cartLength}</span>
@@ -45,20 +45,30 @@ const CartIndicator = () => {
           </Button>
         </>
       ) : (
-        <Form
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (inputValue.trim() !== '') {
-              dispatch(setUsernameAction(inputValue));
-            }
+        // <Form
+        //   onSubmit={(e) => {
+        //     e.preventDefault();
+        //     if (inputValue.trim() !== '') {
+        //       dispatch(setUsernameAction(inputValue));
+        //     }
+        //   }}
+        // >
+        //   <Form.Control
+        //     placeholder='Effettua il login'
+        //     value={inputValue}
+        //     onChange={(e) => setInputValue(e.target.value)}
+        //   />
+        // </Form>
+        <Button
+          className='d-flex align-items-center bg-primary'
+          onClick={() => {
+            dispatch(setUsernameAction(''));
+            setInputValue('');
+            navigate('/login');
           }}
         >
-          <Form.Control
-            placeholder='Effettua il login'
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-        </Form>
+          Login
+        </Button>
       )}
     </div>
   );
