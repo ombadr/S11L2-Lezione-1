@@ -8,14 +8,13 @@ import { Form, Button, FormControl } from 'react-bootstrap';
 const Login = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState('');
-  const isLoggedIn = useSelector((state) => state.user.username);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (localStorage.getItem('user')) {
       navigate('/');
     }
-  }, [isLoggedIn, navigate]);
+  }, [localStorage.getItem('user'), navigate]);
 
   return (
     <Form
@@ -23,6 +22,7 @@ const Login = () => {
         e.preventDefault();
         if (inputValue.trim() !== '') {
           dispatch(setUsernameAction(inputValue));
+          localStorage.setItem('user', inputValue);
         }
       }}
     >

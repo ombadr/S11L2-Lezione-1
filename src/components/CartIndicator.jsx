@@ -17,13 +17,25 @@ const CartIndicator = () => {
 
   const dispatch = useDispatch();
 
+  const isLoggedIn = () => {
+    if (localStorage.getItem('user') !== null) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem('user');
+  };
+
   return (
     <div className='d-flex justify-content-end my-4'>
       {/*
 			se c'è l'utente, viene stampato il nome e non compare il form, altrimenti c'è il form per consentire il login
 			*/}
 
-      {user ? (
+      {isLoggedIn ? (
         <>
           <span className='me-2'>Benvenuto, {user}!</span>
           <Button
@@ -38,6 +50,7 @@ const CartIndicator = () => {
             onClick={() => {
               dispatch(setUsernameAction(''));
               setInputValue('');
+              logout();
               navigate('/');
             }}
           >
