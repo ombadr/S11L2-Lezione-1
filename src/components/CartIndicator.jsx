@@ -25,13 +25,23 @@ const CartIndicator = () => {
 
       {user ? (
         <>
-          <span>Benvenuto, {user}!</span>
+          <span>Benvenuto, {user}!</span>&nbsp;
           <Button
             onClick={() => navigate('cart')}
             className='d-flex align-items-center'
           >
             <FaShoppingCart />
             <span className='ms-2'>{cartLength}</span>
+          </Button>
+          <Button
+            className='d-flex align-items-center bg-danger'
+            onClick={() => {
+              dispatch(setUsernameAction(''));
+              setInputValue('');
+              navigate('/');
+            }}
+          >
+            Logout
           </Button>
         </>
       ) : (
