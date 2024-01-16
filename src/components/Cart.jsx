@@ -33,10 +33,7 @@ const Cart = () => {
                 <Button
                   variant='danger'
                   onClick={() => {
-                    dispatch({
-                      type: 'REMOVE_FROM_CART',
-                      payload: i,
-                    });
+                    dispatch(removeFromCartAction(i));
                   }}
                 >
                   <FaTrash />
